@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * pall - function that printd the stack
- * @stack: stack
- * @line_cntr: line amount
+ * pall - function that print stack
+ * @head: stack head
+ * @line_count: amount of lines
  *
  * Return: void
  */
-void pall(stack_t **stack, unsigned int line_cntr __attribute__((unused)))
+void pall(stack_t **head, unsigned int line_count __attribute__((unused)))
 {
-	print_stack(*stack)
+	print_stack(*head);
 }

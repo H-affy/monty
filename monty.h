@@ -38,7 +38,22 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void push(stack_t **stack, unsigned int line_cntr);
-void pall(stack_t **stack, unsigned int line_cntr __attribute__((unused)));
+/**
+ * struct help - argument of the current opcode
+ * @data_struct: stack mode
+ * @argument: the arguments
+ *
+ * Description: global structure used
+ */
+typedef struct help
+{
+	int data_struct;
+	char *argument;
+} help;
+help global;
+
+void push(stack_t **head, unsigned int line_count);
+void pall(stack_t **head, unsigned int line_count __attribute__((unused)));
+void pint(stack_t **head, unsigned int line_count);
 
 #endif
