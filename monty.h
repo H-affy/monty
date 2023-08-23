@@ -52,8 +52,12 @@ typedef struct help
 } help;
 help global;
 
-void push(stack_t **head, unsigned int line_count);
-void pall(stack_t **head, unsigned int line_count __attribute__((unused)));
-void pint(stack_t **head, unsigned int line_count);
+void push(stack_t **stack, unsigned int line_count);
+void pall(stack_t **stack, unsigned int line_count __attribute__((unused)));
+void pint(stack_t **stack, unsigned int line_count);
+void pop(stack_t **stack, unsigned int line_count);
+
+void file_error(char *argv);
+void error_usage(void);
 
 #endif
