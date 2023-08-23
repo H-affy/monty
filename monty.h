@@ -57,6 +57,9 @@ void pall(stack_t **stack, unsigned int line_count __attribute__((unused)));
 void pint(stack_t **stack, unsigned int line_count);
 void pop(stack_t **stack, unsigned int line_count);
 void swap(stack_t **stack, unsigned int line_count);
+void add(stack_t **stack, unsigned int line_count);
+void nop(stack_t **stack, unsigned int line_count);
+void sub(stack_t **stack, unsigned int line_count);
 
 void file_error(char *argv);
 void error_usage(void);
