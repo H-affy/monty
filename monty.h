@@ -39,5 +39,6 @@ typedef struct instruction_s
 } instruction_t;
 
 void push(stack_t **stack, unsigned int line_cntr);
+void pall(stack_t **stack, unsigned int line_cntr __attribute__((unused)));
 
 #endif
