@@ -3,7 +3,7 @@
 /**
  * sub - subtracts the first two nodes
  * @stack: the stack
- * @line-count: amounts of lines
+ * @line_count: amounts of lines
  *
  * Return: void
  */

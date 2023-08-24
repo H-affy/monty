@@ -61,7 +61,13 @@ void add(stack_t **stack, unsigned int line_count);
 void nop(stack_t **stack, unsigned int line_count);
 void sub(stack_t **stack, unsigned int line_count);
 void div(stack_t **stack, unsigned int line_count);
-
+void mul(stack_t **stack, unsigned int line_count);
+void mod(stack_t **stack, unsigned int line_count);
+void opcode(stack_t **stack, char *str, unsigned int line_count);
+void pchar(stack_t **stack, unsigned int line_count);
+void pstr(string_t **stack, unsigned int line_count __attribute__((unused)));
+void rotl(stack_t **stack, unsigned int line_count);
+void rotr(stack_t **stack, unsigned int line_count);
 void file_error(char *argv);
 void error_usage(void);
 
