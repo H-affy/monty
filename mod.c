@@ -27,6 +27,6 @@ void mod(stack_t **stack, unsigned int line_count)
 		return;
 	}
 	res = ((*stack)->next->n) % ((*stack)->n);
-	pop(stack, linr_count);
+	pop(stack, line_count);
 	(*stack)->n = res;
 }

@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * sub - subtracts the first two nodes
+ * _sub - subtracts the first two nodes
  * @stack: the stack
  * @line_count: amounts of lines
  *
  * Return: void
  */
-void sub(stack_t **stack, unsigned int line_count)
+void _sub(stack_t **stack, unsigned int line_count)
 {
 	int res;
 

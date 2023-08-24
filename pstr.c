@@ -1,5 +1,6 @@
 #include "monty.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * pstr - prints content of a stack as string
  * @stack: the stack
@@ -15,7 +16,7 @@ void pstr(stack_t **stack, unsigned int line_count __attribute__((unused)))
 	{
 		if (core->n <= 0 || core->n > 127)
 			break;
-		putchar((char) core->next);
+		putchar((char) core->n);
 		core = core->next;
 	}
 	putchar('\n');

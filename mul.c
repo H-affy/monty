@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * mul - multiplies the top value
+ * _mul - multiplies the top value
  * @stack: the stack
  * @line_count: amount of lines
  *
  * Return: void
  *
  */
-void mul(stack_t **stack, unsigned int line_count)
+void _mul(stack_t **stack, unsigned int line_count)
 {
 	int res;
 

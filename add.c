@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * add - adds two nodes of the stack
+ * _add - adds two nodes of the stack
  * @stack: stack
  * @line_count: amout of lines
  *
  * Return: void.
  */
-void add(stack_t **stack, unsigned int line_count)
+void _add(stack_t **stack, unsigned int line_count)
 {
 	int res;
 

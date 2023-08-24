@@ -3,11 +3,34 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
 #include <stddef.h>
+#include <ctype.h>
 #include <unistd.h>
+#include <string.h>
 
+
+#define INSTRUCTIONS         \
+{                             \
+	{"push", push},        \
+		{"pall", pall}, \
+		{"pint", pint}, \
+		{"pop", pop},   \
+		{"swap", swap}, \
+		{"nop", nop},   \
+		{"div", _div},  \
+		{"mul", _mul},  \
+		{"add", _add},  \
+		{"sub", _sub},   \
+		{"mod", mod},    \
+		{"pchar", pchar}, \
+		{"pstr", pstr},    \
+		{"rotl", rotl},     \
+		{"rotr", rotr},     \
+		{                   \
+			NULL, NULL  \
+		}                   \
+}
+			
 /**
  * struct stack_s - doubly linked list representation of stacks (or queue).
  * @n: integer.
@@ -57,28 +80,29 @@ stack_t *add_node(stack_t **stack, const int n);
 size_t print_stack(const stack_t *stack);
 void free_stack(stack_t *stack);
 
-
 void push(stack_t **stack, unsigned int line_count);
-void pall(stack_t **stack, unsigned int line_count __attribute__((unused)));
+void pall(stack_t **stack, unsigned int line_coun);
 void pint(stack_t **stack, unsigned int line_count);
 void pop(stack_t **stack, unsigned int line_count);
 void swap(stack_t **stack, unsigned int line_count);
-void add(stack_t **stack, unsigned int line_count);
 void nop(stack_t **stack, unsigned int line_count);
-void sub(stack_t **stack, unsigned int line_count);
-void div(stack_t **stack, unsigned int line_count);
-void mul(stack_t **stack, unsigned int line_count);
+
+
+void _add(stack_t **stack, unsigned int line_count);
+void _sub(stack_t **stack, unsigned int line_count);
+void _div(stack_t **stack, unsigned int line_count);
+void _mul(stack_t **stack, unsigned int line_count);
 void mod(stack_t **stack, unsigned int line_count);
 
 
 void opcode(stack_t **stack, char *str, unsigned int line_count);
 void pchar(stack_t **stack, unsigned int line_count);
-void pstr(string_t **stack, unsigned int line_count __attribute__((unused)));
+void pstr(stack_t **stack, unsigned int line_count);
 void rotl(stack_t **stack, unsigned int line_count);
 void rotr(stack_t **stack, unsigned int line_count);
 
 
-void file_error(char *argv);
-void error_usage(void);
+int is_digit(char *string);
+int isnumber(char *str);
 
 #endif

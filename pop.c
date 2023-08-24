@@ -7,9 +7,9 @@
  *
  * Return: void
  */
-void pop(stck_t **stack, unsigned int line_count)
+void pop(stack_t **stack, unsigned int line_count)
 {
-	stack_t *tmp = NUll;
+	stack_t *tmp = NULL;
 
 	if (!stack || !*stack)
 	{
@@ -21,5 +21,5 @@ void pop(stck_t **stack, unsigned int line_count)
 	*stack = tmp;
 	if (!*stack)
 		return; /*prevents error cause next line might assign NULL */
-	(*head)->prev = NULL;
+	(*stack)->prev = NULL;
 }

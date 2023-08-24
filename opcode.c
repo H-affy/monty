@@ -8,7 +8,7 @@
  *
  * Return: nothing
  */
-void opcode(stac_t **stack, char *str, unsigned int line_count)
+void opcode(stack_t **stack, char *str, unsigned int line_count)
 {
 	int n = 0;
 

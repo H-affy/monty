@@ -8,7 +8,7 @@
  * Return: the new node, if memory allocation fails
  * the function will return NILL.
  */
-stack_t *queue_node(stack_t, const int n)
+stack_t *queue_node(stack_t **stack, const int n)
 {
 	stack_t *new = malloc(sizeof(stack_t));
 	stack_t *core = *stack;

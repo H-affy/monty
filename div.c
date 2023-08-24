@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * div - divides top value of the node
+ * _div - divides top value of the node
  * @stack: the stack
  * @line_count: Amount of lines
  *
  * Return: void
  */
-void div(stack_t **stack, unsigned int line_count)
+void _div(stack_t **stack, unsigned int line_count)
 {
 	int res;
 
@@ -17,7 +17,7 @@ void div(stack_t **stack, unsigned int line_count)
 				line_count);
 		exit(EXIT_FAILURE);
 	}
-	if (((*Stack)->n) == 0)
+	if (((*stack)->n) == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_count);
 		exit(EXIT_FAILURE);
