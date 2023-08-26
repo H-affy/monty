@@ -9,29 +9,6 @@
 #include <string.h>
 #include <sys/types.h>
 #include <fcntl.h>
-
-
-#define INSTRUCTIONS         \
-{                             \
-	{"push", push},        \
-		{"pall", pall}, \
-		{"pint", pint}, \
-		{"pop", pop},   \
-		{"swap", swap}, \
-		{"nop", nop},   \
-		{"div", _div},  \
-		{"mul", _mul},  \
-		{"add", _add},  \
-		{"sub", _sub},   \
-		{"mod", mod},    \
-		{"pchar", pchar}, \
-		{"pstr", pstr},    \
-		{"rotl", rotl},     \
-		{"rotr", rotr},     \
-		{                   \
-			NULL, NULL  \
-		}                   \
-}
 			
 /**
  * struct stack_s - doubly linked list representation of stacks (or queue).
@@ -64,23 +41,25 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct help - argument of the current opcode
- * @data_struct: stack mode
- * @argument: the arguments
- *
- * Description: global structure used
+ * struct bus_s - args, file, line contenet
+ * @ard: value
+ * @file: points to monty file
+ * @content: line content
+ * @lifi: flag change stack
+ * Desc: carries value therough the program
  */
-typedef struct help
+typedef struct bus_s
 {
-	int data_struct;
-	char *argument;
-} help;
-help global;
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+} bus_t;
+extern bus_t bus;
 
-stack_t *queue_node(stack_t **stack, const int n);
-stack_t *add_node(stack_t **stack, const int n);
-size_t print_stack(const stack_t *stack);
-void free_stack(stack_t *stack);
+ssize_t getstdin(char **lineptr, int file);
+char *realloc(char *ptr, unsigned int old_size, unsigned int new_size);
+char *clean_line(char *content);
 
 void push(stack_t **stack, unsigned int line_count);
 void pall(stack_t **stack, unsigned int line_coun);
@@ -88,27 +67,21 @@ void pint(stack_t **stack, unsigned int line_count);
 void pop(stack_t **stack, unsigned int line_count);
 void swap(stack_t **stack, unsigned int line_count);
 void nop(stack_t **stack, unsigned int line_count);
-
-
+void free_stack(stack_t *stack);
+void queue_node(stack_t **stack, int n);
+void add_node(stack_t **stack, int n);
+void queue(stack_t **stack, unsigned int line_count);
+void stack(stack_t **stack, unsigned int line_count);
 void _add(stack_t **stack, unsigned int line_count);
 void _sub(stack_t **stack, unsigned int line_count);
 void _div(stack_t **stack, unsigned int line_count);
 void _mul(stack_t **stack, unsigned int line_count);
 void mod(stack_t **stack, unsigned int line_count);
-
-
-void opcode(stack_t **stack, char *str, unsigned int line_count);
 void pchar(stack_t **stack, unsigned int line_count);
 void pstr(stack_t **stack, unsigned int line_count);
 void rotl(stack_t **stack, unsigned int line_count);
-void rotr(stack_t **stack, unsigned int line_count);
+void rotr(stack_t **stack, __attribute__((unusued)) unsigned int line_count);
+int execute(char *content, stack_t **stack, unsigned int line_count, FILE *file);
 
-
-int is_digit(char *string);
-int isnumber(char *str);
-int isascii(int stack);
-
-void file_error(char *argv);
-void error_usage(void);
 
 #endif
