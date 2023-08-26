@@ -10,14 +10,19 @@
  */
 void pstr(stack_t **stack, unsigned int line_count __attribute__((unused)))
 {
-	stack_t *core = *stack;
+	stack_t *s;
+	(void) line_count;
 
-	while (core)
+	s = *stack;
+
+	while (s)
 	{
-		if (core->n <= 0 || core->n > 127)
+		if (s->n <= 0 || s->n > 127)
+		{
 			break;
-		putchar((char) core->n);
-		core = core->next;
+		}
+		printf("%c", s->n);
+		s = s->next;
 	}
-	putchar('\n');
+	printf('\n');
 }

@@ -9,25 +9,34 @@
  */
 void push(stack_t **stack, unsigned int line_count)
 {
-	char *n = global.argument;
+	int n, j = 0, flag = 0;
 
-	if ((is_digit(n)) == 0)
+	if (bus.arg)
+	{
+		if (bus.arg[0] == '-')
+			j++;
+		for (; bus.arg[j] > 57 || bus.arg[j] < 48)
+			flag = 1;
+	}
+	if (flag == 1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
-	}
-	if (global.data_struct == 1)
-	{
-		if (!add_node(stack, atoi(global.argument)))
-		{
-			exit(EXIT_FAILURE);
-		}
 	}
 	else
 	{
-		if (!queue_node(stack, atoi(global.argument)))
-		{
-			exit(EXIT_FAILURE);
-		}
+		fprintf(stderr, "L%d: usage: push integer\n", line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
 	}
+	n = atoi(bus.arg);
+	if (bus.lifi == 0)
+		add_node(stack, n);
+	else
+		queue(stack, n);
 }

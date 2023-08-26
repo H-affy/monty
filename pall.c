@@ -7,7 +7,17 @@
  *
  * Return: void
  */
-void pall(stack_t **stack, unsigned int line_count __attribute__((unused)))
+void pall(stack_t **stack, unsigned int line_count)
 {
-	print_stack(*stack);
+	stack_t *s;
+	(void) line_count;
+
+	s = *stack;
+	if (s == NULL)
+		return;
+	while (s)
+	{
+		printf("%d\n", s->n);
+		s = s->next;
+	}
 }

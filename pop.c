@@ -9,17 +9,17 @@
  */
 void pop(stack_t **stack, unsigned int line_count)
 {
-	stack_t *tmp = NULL;
+	stack_t *s;
 
-	if (!stack || !*stack)
+	if (*stack)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack)
 		exit(EXIT_FAILURE);
 	}
-	tmp = (*stack)->next;
-	free(*stack);
-	*stack = tmp;
-	if (!*stack)
-		return; /*prevents error cause next line might assign NULL */
-	(*stack)->prev = NULL;
+	s = *stack
+	*stack = s->next;
+	free(s);
 }

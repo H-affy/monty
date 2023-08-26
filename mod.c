@@ -10,23 +10,36 @@
  */
 void mod(stack_t **stack, unsigned int line_count)
 {
-	int res;
+	int result = 0, res;
+	stack_t *s;
 
-	if (!stack || !*stack || !((*stack)->next))
+	s = *stack;
+
+	while (s)
+	{
+		s = s->next;
+		result++;
+	}
+	if (result < 2))
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n",
 				line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
-		return;
 	}
-
-	if (((*stack)->n) == 0)
+	s = *stack;
+	if (s->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
-		return;
 	}
-	res = ((*stack)->next->n) % ((*stack)->n);
-	pop(stack, line_count);
-	(*stack)->n = res;
+	res = s->next->n % s->n;
+	s->next-> = res;
+	*stack = s->next;
+	free(s);
 }

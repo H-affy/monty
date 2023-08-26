@@ -14,18 +14,25 @@
  */
 void pchar(stack_t **stack, unsigned int line_count)
 {
-	if (!stack || !(*stack))
+	stack_t *s;
+
+	s = *stack;
+	if (!s)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
-		return;
 	}
-	if (isascii((*stack)->n) == 0)
+	if (s->n > 127 || s->n < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, calue out of range\n",
 				line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
-		return;
 	}
-	printf("%c\n", (*stack)->n);
+	printf("%c\n", s->n);
 }
