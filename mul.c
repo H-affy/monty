@@ -11,10 +11,10 @@
 void _mul(stack_t **stack, unsigned int line_count)
 {
 	int result = 0, res;
-	stack_t *s
+
+	stack_t *s;
 
 	s = *stack;
-
 	while (s)
 	{
 		s = s->next;
@@ -31,7 +31,7 @@ void _mul(stack_t **stack, unsigned int line_count)
 	}
 	s = *stack;
 	res = s->next->n * s->n;
-	s->next-> = res;
+	s->next->n = res;
 	*stack = s->next;
 	free(s);
 }

@@ -10,7 +10,8 @@
 void _add(stack_t **stack, unsigned int line_count)
 {
 	int result = 0, res;
-	stack_t = *s;
+
+	stack_t *s;
 
 	s = *stack;
 

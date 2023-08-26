@@ -58,8 +58,9 @@ typedef struct bus_s
 extern bus_t bus;
 
 ssize_t getstdin(char **lineptr, int file);
-char *realloc(char *ptr, unsigned int old_size, unsigned int new_size);
+char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
 char *clean_line(char *content);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 void push(stack_t **stack, unsigned int line_count);
 void pall(stack_t **stack, unsigned int line_coun);
@@ -71,7 +72,7 @@ void free_stack(stack_t *stack);
 void queue_node(stack_t **stack, int n);
 void add_node(stack_t **stack, int n);
 void queue(stack_t **stack, unsigned int line_count);
-void stack(stack_t **stack, unsigned int line_count);
+void _stack(stack_t **stack, unsigned int line_count);
 void _add(stack_t **stack, unsigned int line_count);
 void _sub(stack_t **stack, unsigned int line_count);
 void _div(stack_t **stack, unsigned int line_count);
@@ -80,7 +81,7 @@ void mod(stack_t **stack, unsigned int line_count);
 void pchar(stack_t **stack, unsigned int line_count);
 void pstr(stack_t **stack, unsigned int line_count);
 void rotl(stack_t **stack, unsigned int line_count);
-void rotr(stack_t **stack, __attribute__((unusued)) unsigned int line_count);
+void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_count);
 int execute(char *content, stack_t **stack, unsigned int line_cnt, FILE *file);
 
 

@@ -6,9 +6,9 @@
  * @line_count: count line
  * Return: void.
  */
-void rotl(stack_t **stack,__attribute__((unused))  unsigned int line_count)
+void rotl(stack_t **stack, __attribute__((unused))  unsigned int line_count)
 {
-	stack_t *s = *stack *res;
+	stack_t *s = *stack, *res;
 
 	if (stack == NULL || (*stack)->next == NULL)
 	{

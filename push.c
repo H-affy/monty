@@ -15,7 +15,7 @@ void push(stack_t **stack, unsigned int line_count)
 	{
 		if (bus.arg[0] == '-')
 			j++;
-		for (; bus.arg[j] > 57 || bus.arg[j] < 48)
+		for (; bus.arg[j] > 57 || bus.arg[j] < 48;)
 			flag = 1;
 	}
 	if (flag == 1)

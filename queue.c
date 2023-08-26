@@ -9,13 +9,13 @@
  */
 void queue(stack_t **stack, unsigned int line_count)
 {
-	(void)head;
-	(void)counter;
+	(void)stack;
+	(void)line_count;
 	bus.lifi = 1;
 }
 
 /**
- * addqueue - add node to the tail
+ * queue_node - add node to the tail
  * @n: new value
  * @stack: stack head
  * Reyurn: nothing

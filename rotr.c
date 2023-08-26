@@ -7,17 +7,16 @@
  *
  * Return: void
  */
-void rotr(stack_t **stack, unsigned int line_count)
+void rotr(stack_t **stack, __attribute__((unused))  unsigned int line_count)
 {
 	stack_t *down;
 
-	doen = *stack;
+	down = *stack;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		return;
 	}
-	
 	while (down->next)
 	{
 		down = down->next;

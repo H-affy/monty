@@ -20,7 +20,7 @@ void mod(stack_t **stack, unsigned int line_count)
 		s = s->next;
 		result++;
 	}
-	if (result < 2))
+	if (result < 2)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n",
 				line_count);
@@ -39,7 +39,7 @@ void mod(stack_t **stack, unsigned int line_count)
 		exit(EXIT_FAILURE);
 	}
 	res = s->next->n % s->n;
-	s->next-> = res;
+	s->next->n = res;
 	*stack = s->next;
 	free(s);
 }

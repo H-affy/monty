@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * eexecute - executes the opcode
+ * execute - executes the opcode
  * @stack: stack
- * @line_count: counts amount of line
+ * @line_cnt: counts amount of line
  * @file: point to monty file
  * @content: line content
  *
@@ -28,17 +28,17 @@ int execute(char *content, stack_t **stack, unsigned int line_cnt, FILE *file)
 		{"rotl", rotl},
 		{"rotr", rotr},
 		{"queue", queue},
-		{"stack", stack},
+		{"stack", _stack},
 		{NULL, NULL}
 	};
-	unsigneed int n = 0;
-	cha *pc;
+	unsigned int n = 0;
+	char *pc;
 
 	pc = strtok(content, "\n\t");
+
 	if (pc && pc[0] == '#')
 		return (0);
 	bus.arg = strtok(NULL, "\n\t");
-
 	while (opst[n].opcode && pc)
 	{
 		if (strcmp(pc, opst[n].opcode) == 0)
@@ -50,11 +50,11 @@ int execute(char *content, stack_t **stack, unsigned int line_cnt, FILE *file)
 	}
 	if (pc && opst[n].opcode == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_cnt, op);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_cnt, pc);
 		fclose(file);
 		free(content);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	return (1)
+	return (1);
 }

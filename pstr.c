@@ -24,5 +24,5 @@ void pstr(stack_t **stack, unsigned int line_count __attribute__((unused)))
 		printf("%c", s->n);
 		s = s->next;
 	}
-	printf('\n');
+	printf("\n");
 }

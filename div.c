@@ -25,11 +25,11 @@ void _div(stack_t **stack, unsigned int line_count)
 				line_count);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	res = s->next->n / s->n;
-	s->next-:>n = res;
+	s->next->n = res;
 	*stack = s->next;
 	free(s);
 }

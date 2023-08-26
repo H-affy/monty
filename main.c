@@ -1,10 +1,9 @@
-#define _POSIX_C_SOURCE 200809L
-
 #include "monty.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-int status = 0;
+
+bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
  * main - check the code
@@ -46,7 +45,7 @@ int main(int argc, char **argv)
 
 		if (read_line > 0)
 		{
-			execut(content, &stack, line_cnt, file);
+			execute(content, &stack, line_count, file);
 		}
 		free(content);
 	}
