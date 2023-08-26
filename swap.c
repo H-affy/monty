@@ -9,19 +9,27 @@
  */
 void swap(stack_t **stack, unsigned int line_count)
 {
-	stack_t *tmp = NULL;
-	int tmp_x = 0;
+	stack_t *tmp;
+	int tmp_x = 0, res;
 
-	if (!stack || !*stack || !((*stack)->next))
+	tmp = *stack;
+
+	while (tmp)
+	{
+		tmp = tmp->next;
+		tmp_x++;
+	}
+	if (tmp_x < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n",
 				line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
-	tmp_x = tmp->n;
-	tmp->n = tmp_x;
-
+	res = tmp->n;
 	tmp->n = tmp->next->n;
-	tmp->next->n = tmp_x;
+	tmp->next->n = res;
 }

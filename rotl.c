@@ -6,21 +6,23 @@
  * @line_count: count line
  * Return: void.
  */
-void rotl(stack_t **stack, unsigned int line_count)
+void rotl(stack_t **stack,__attribute__((unused))  unsigned int line_count)
 {
-	stack_t *back;
-	stack_t *front;
+	stack_t *s = *stack *res;
 
-	(void) line_count;
-	if (!stack || !*stack || !(*stack)->next)
+	if (stack == NULL || (*stack)->next == NULL)
+	{
 		return;
-	back = front = *stack;
+	}
+	res = (*stack)->next;
+	res->prev = NULL;
 
-	while (front->next)
-		front = front->next;
-	front->next = back;
-	back->prev = front;
-	*stack = back->next;
-	(*stack)->prev->next = NULL;
-	(*stack)->prev = NULL;
+	while (s->next != NULL)
+	{
+		s = s->next;
+	}
+	s->next = *stack;
+	(*stack)->next = NULL;
+	(*stack)->prev = s;
+	(*stack) = res;
 }
