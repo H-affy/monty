@@ -51,23 +51,23 @@ stack_t *queue_node(stack_t **stack, const int n)
  */
 stack_t *add_node(stack_t **stack, const int n)
 {
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *node = malloc(sizeof(stack_t));
 
-	if (!new)
+	if (!node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(new);
+		free(node);
 		return (NULL);
 	}
-	new->n = n;
+	node->n = n;
 
-	new->next = *stack;
-	new->prev = NULL;
+	node->next = *stack;
+	node->prev = NULL;
 	if (*stack)
-		(*stack)->prev = new;
+		(*stack)->prev = node;
 
-	*stack = new;
-	return (new);
+	*stack = node;
+	return (node);
 }
 
 /**

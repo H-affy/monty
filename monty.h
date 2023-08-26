@@ -7,6 +7,8 @@
 #include <ctype.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 
 #define INSTRUCTIONS         \
@@ -104,5 +106,9 @@ void rotr(stack_t **stack, unsigned int line_count);
 
 int is_digit(char *string);
 int isnumber(char *str);
+int isascii(int stack);
+
+void file_error(char *argv);
+void error_usage(void);
 
 #endif
