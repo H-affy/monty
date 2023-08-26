@@ -49,45 +49,26 @@ stack_t *queue_node(stack_t **stack, const int n)
  *
  * Return: The new node, if fails return NULL
  */
-stack_t *add_node(stack_t **stack, const int n)
+void add_node(stack_t **stack, int n)
 {
-	stack_t *node = malloc(sizeof(stack_t));
+	stack_t *node *res;
 
-	if (!node)
+	res = *stack;
+	node = malloc(sizeof(stack_t));
+
+	if (node == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free(node);
-		return (NULL);
+		printf("Error\n");
+		exit(0);
 	}
+	if (res)
+		res->prev = node;
 	node->n = n;
-
-	node->next = *stack;
+	node->n = *stack;
 	node->prev = NULL;
-	if (*stack)
-		(*stack)->prev = node;
-
 	*stack = node;
-	return (node);
 }
 
-/**
- * print_stack - function that prints the content of stack
- * @stack: stack
- * Return: number of element
- */
-size_t print_stack(const stack_t *stack)
-{
-	size_t s = 0;
-
-	while (stack)
-	{
-		printf("%d\n", stack->n);
-		stack = stack->next;
-		s++;
-	}
-
-	return (s);
-}
 
 /**
  * free_stack - frees dlinkedint_t list
@@ -97,18 +78,14 @@ size_t print_stack(const stack_t *stack)
  */
 void free_stack(stack_t *stack)
 {
-	stack_t *core = stack;
-	stack_t *next;
+	stack_t *core;
 
-	if (stack)
+	core = stack;
+
+	while (stack)
 	{
-		next = stack->next;
-		while (core)
-		{
-			free(core);
-			core = next;
-			if (next)
-				next = next->next;
-		}
+		core = stack->next;
+		free(stack);
+		stack = core;
 	}
 }

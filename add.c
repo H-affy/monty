@@ -9,16 +9,29 @@
  */
 void _add(stack_t **stack, unsigned int line_count)
 {
-	int res;
+	int result = 0, res;
+	stack_t = *s;
 
-	if (!stack || !*stack || !((*stack)->next))
+	s = *stack;
+
+	while (s)
+	{
+		s = s->next;
+		result++;
+	}
+	if (result < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n",
 				line_count);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
-	res = ((*stack)->next->n) + ((*stack)->n);
-	pop(stack, line_count);
-	(*stack)->n = res;
+	s = *stack;
+	res = s->n + s->next->n;
+	s->next->n = res;
+	*stack = s->next;
+	free(s);
 }

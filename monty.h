@@ -81,7 +81,7 @@ void pchar(stack_t **stack, unsigned int line_count);
 void pstr(stack_t **stack, unsigned int line_count);
 void rotl(stack_t **stack, unsigned int line_count);
 void rotr(stack_t **stack, __attribute__((unusued)) unsigned int line_count);
-int execute(char *content, stack_t **stack, unsigned int line_count, FILE *file);
+int execute(char *content, stack_t **stack, unsigned int line_cnt, FILE *file);
 
 
 #endif

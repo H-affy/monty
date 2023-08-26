@@ -15,42 +15,42 @@ int status = 0;
  */
 int main(int argc, char **argv)
 {
-	FILE *file;
-	size_t buf_len = 0;
-	char *buffer = NULL;
-	char *str = NULL;
-	stack_t *stack = NULL;
-	unsigned int line_count = 1;
 
-	global.data_struct = 1;
+	FILE *file;
+	size_t size = 0;
+	ssize_t read_line = 1;
+	char *content;
+	stack_t *stack = NULL;
+	unsigned int line_count = 0;
+
 
 	if (argc != 2)
-		error_usage();
+	{
+		fprintf(stderr, "USAGE: monty file/n");
+		exit(EXIT_FAILURE);
+	}
 	file = fopen(argv[1], "r");
+	bus.file = file;
 
 	if (!file)
-		file_error(argv[1]);
-	while ((getline(&buffer, &buf_len, file)) != (-1))
 	{
-		if (status)
-			break;
-		if (*buffer == '\n')
-		{
-			line_count++;
-			continue;
-		}
-		str = strtok(buffer, "\t\n");
-		if (!str || *str == '#')
-		{
-			line_count++;
-			continue;
-		}
-		global.argument = strtok(NULL, " \t\n");
-		opcode(&stack, str, line_count);
-		line_count++;
+		fprintf(stderr, "Error: cant't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
-	free(buffer);
+	while (read_line > 0)
+	{
+		content = NULL;
+		read_line = getline(&content, &size, file);
+		bus.content = content;
+		line_count++;
+
+		if (read_line > 0)
+		{
+			execut(content, &stack, line_cnt, file);
+		}
+		free(content);
+	}
 	free_stack(stack);
 	fclose(file);
-	exit(EXIT_SUCCESS);
+	return (0);
 }
